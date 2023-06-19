@@ -8,8 +8,22 @@ DIR=/media/vc1
 
 if [ -d "$DIR" ]; 
 then
-	sudo veracrypt --text --mount $VERADRIVE $DIR --keyfiles "$KEYFILE" --pim 0 --protect-hidden no 
+	veracrypt --text --mount $VERADRIVE $DIR --keyfiles "$KEYFILE" --pim 0 --protect-hidden no 
+	echo "O script acabou de finalizar"
+	sleep 5
+	clear
 else
-	mkdir /media/vc1
-	sudo veracrypt --text --mount $VERADRIVE $DIR --keyfiles "$KEYFILE" --pim 0 --protect-hidden no 
+	if [ -d /media ]; 
+	then
+		mkdir /media/vc1
+	else
+		mkdir /media
+		mkdir /media/vc1
+	fi
+
+	veracrypt --text --mount $VERADRIVE $DIR --keyfiles "$KEYFILE" --pim 0 --protect-hidden no 
+	echo "O script acabou de finalizar."
+	echo "Como não foi possivel encontar $DIR, a pasta 'vc1' foi criada em /media" 
+	sleep 5
+	clear
 fi
