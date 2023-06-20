@@ -10,7 +10,7 @@ if [ -d "$DIR" ];
 then
 	veracrypt --text --mount $VERADRIVE $DIR --keyfiles "$KEYFILE" --pim 0 --protect-hidden no 
 	echo "O script acabou de finalizar"
-	sleep 5
+	sleep 2
 	clear
 else
 	if [ -d /media ]; 
@@ -24,6 +24,6 @@ else
 	veracrypt --text --mount $VERADRIVE $DIR --keyfiles "$KEYFILE" --pim 0 --protect-hidden no 
 	echo "O script acabou de finalizar."
 	echo "Como não foi possivel encontar $DIR, a pasta 'vc1' foi criada em /media" 
-	sleep 5
+	sleep 2
 	clear
 fi
