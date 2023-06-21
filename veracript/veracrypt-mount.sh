@@ -11,10 +11,15 @@ DIR=/media/vc1
 # para montar disco veracrypt utilizando o arquivo de chave.
 if [ -d "$DIR" ]; 
 then
-	veracrypt --text --mount $VERADRIVE $DIR --keyfiles "$KEYFILE" --pim 0 --protect-hidden no 
-	echo "O script acabou de finalizar"
-	sleep 2
-	clear
+	if veracrypt --text --mount $VERADRIVE $DIR --keyfiles "$KEYFILE" --pim 0 --protect-hidden no; 
+	then	
+		echo "O script acabou de finalizar"
+		sleep 2
+		clear
+	else
+		clear
+		echo "Não foi possivel realizar a montagem do driver"
+	fi
 else
 
 	# Verifica se o diretório /media existe, caso o mesmo não existe, irá criar o /media e posteriormente /media/vc1.
@@ -28,9 +33,13 @@ else
 	fi
 
 	# Executa o comando para montagem do disco.
-	veracrypt --text --mount $VERADRIVE $DIR --keyfiles "$KEYFILE" --pim 0 --protect-hidden no 
-	echo "O script acabou de finalizar."
-	echo "Como não foi possivel encontar $DIR, a pasta 'vc1' foi criada em /media" 
-	sleep 2
-	clear
+	if veracrypt --text --mount $VERADRIVE $DIR --keyfiles "$KEYFILE" --pim 0 --protect-hidden no; 
+	then	
+		echo "O script acabou de finalizar"
+		sleep 2
+		clear
+	else
+		clear
+		echo "Não foi possivel realizar a montagem do driver"
+	fi
 fi
