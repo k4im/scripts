@@ -1,7 +1,7 @@
 #!/bin/bash 
 
 
-if [ -z $1];
+if [ -z $1 ];
 then 
 	echo "O valor não pode ser nulo"
 else 
