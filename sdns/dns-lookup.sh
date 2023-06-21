@@ -1,12 +1,11 @@
 #!/bin/bash 
 
-read -p "Favor insira o endereço para pesquisa: " URL
 
-if [ -z $URL ];
+if [ -z $1];
 then 
 	echo "O valor não pode ser nulo"
 else 
-	host -t MX $URL
-	host -t NS $URL
-	host -t A $URL
+	host -t MX $1
+	host -t NS $1
+	host -t A $1
 fi
