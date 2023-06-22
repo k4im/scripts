@@ -1,6 +1,8 @@
 #!/bin/bash 
 
-# define função de sdns.
+# Define funcao para realizar operacao
+# de buscar de dados MX, DNS, TXT, CNAME
+# NS, A. 
 
 sdns()
 {
@@ -15,11 +17,12 @@ sdns()
 	host -t TXT $1
 	echo -n "CNAME: "
 	host -t CNAME $1
-	echo "--------------------"
-
+	echo "---------------------"
 }
 
-#Verifica se o endereço é valido
+# Verifica se o endereço é valido
+# & se foi adicionado algum argumento 
+# apos a execucacao do script.
 msg="Por favor adicione um endereço valido"
 if [ $# -ne 1 ]; 
 then
