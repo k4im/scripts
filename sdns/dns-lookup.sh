@@ -8,4 +8,6 @@ else
 	host -t MX $1
 	host -t NS $1
 	host -t A $1
+	host -t TXT $1
+	host -t CNAME $1
 fi
