@@ -16,9 +16,11 @@ then
 		echo "O script acabou de finalizar"
 		sleep 2
 		clear
+		exit 0
 	else
 		clear
 		echo "Não foi possivel realizar a montagem do driver"
+		exit 1
 	fi
 else
 
@@ -38,8 +40,10 @@ else
 		echo "O script acabou de finalizar"
 		sleep 2
 		clear
+		exit 0
 	else
 		clear
 		echo "Não foi possivel realizar a montagem do driver"
+		exit 1
 	fi
 fi
