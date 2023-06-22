@@ -4,7 +4,7 @@ echo "Executando script veracrypt-script.sh...."
 read -p "Insira o caminho absoluto para a keyfile: " KEYFILE
 read -p "Insira o caminho absoluto para o veracrypt.vc: " VERADRIVE
 
-DIR=/media/vc1
+readonly DIR="/media/vc1"
 
 
 # verifica se o endereço existe, caso exista ele executa o comando 
