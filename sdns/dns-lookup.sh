@@ -1,10 +1,9 @@
 #!/bin/bash 
 
+# define função de sdns.
 
-if [ -z $1 ];
-then 
-	echo "O valor não pode ser nulo"
-else 
+sdns()
+{
 	echo "---------------------"
 	echo -n "MX: "
 	host -t MX $1
@@ -17,4 +16,16 @@ else
 	echo -n "CNAME: "
 	host -t CNAME $1
 	echo "--------------------"
-fi
+
+}
+
+#Verifica se o endereço é valido
+msg="Por favor adicione um endereço valido"
+if [ $# -ne 1 ]; 
+then
+	echo $msg 
+	exit 1
+else
+	# Chama a função e realiza a operação de sdns 
+	sdns $1 && exit 0
+fi 
