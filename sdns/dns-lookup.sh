@@ -6,16 +6,19 @@
 
 sdns()
 {
-	echo "---------------------"
-	echo -n "MX: "
+	echo "MX: "
 	host -t MX $1
-	echo -n "server DNS: "
+	echo "---------------------"
+	echo  "servidores DNS: "
 	host -t NS $1
-	echo -n "Endereço IP: "
+	echo "---------------------"
+	echo  "Endereço IP: "
 	host -t A $1
-	echo -n "TXT: "
+	echo "---------------------"
+	echo  "TXT: "
 	host -t TXT $1
-	echo -n "CNAME: "
+	echo "--------------------"
+	echo  "CNAME: "
 	host -t CNAME $1
 	echo "---------------------"
 }
