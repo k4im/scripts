@@ -3,21 +3,15 @@
 # Variaveis
 HEADER="#!/bin/bash"
 DATE_NOW=$(date)
-DESC="
-
-#---------------------
-# Script    : $1
-# Author    : $2
-# Date      : $DATE_NOW 
-# License   : GNU/GLP
-# Version   : 0.1
-#---------------------
-"
-
+SCRIPT_NAME="#   Script	: $1"
+SCRIPT_DATE="#   Date	: $DATE_NOW"
+SCRIPT_AUTHOR="# Author	: $2"
+SCRIPT_VER="#    Version: 0.1"
+SCRIPT_LIN="#	 License: GNU/GLP"
 
 # Verifica se o script já existe
-[[ -f $1 ]] && echo "Ja existe um script com este nome" &&exit 0
-[[ $# -ne 1 ]] && echo "Precisa conter pelo menos um nome para o script" && exit 0
+[[ -f $1 ]] && echo "Ja existe um script com este nome" && exit 0
+[[ $# -lt 1 ]] && echo "Precisa conter pelo menos um nome para o script" && exit 0
 
 # Definindo funções para execucao do script 
 criar_script()
@@ -25,9 +19,11 @@ criar_script()
     touch $1
     
     echo $HEADER > $1
-    
-    echo $DESC > $1
-    
+    echo $SCRIPT_NAME >> $1
+    echo $SCRIPT_DATE >> $1
+    echo $SCRIPT_AUTHOR >> $1
+    echo $SCRIPT_VER >> $1
+    echo $SCRIPT_LIN >> $1    
     chmod +x $1
     
     echo "Criado o script com sucesso!" 
