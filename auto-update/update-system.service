@@ -1,0 +1,10 @@
+[Unit]
+Description=Auto-Update of the system
+
+[Service]
+User=root
+WorkingDirectory=/usr/local/bin
+ExecStart=/bin/bash /usr/local/bin/update-system
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,10 @@
+[Unit]
+Description=Auto-update the system every friday at 17:00
+Requires=update-system.service
+
+[Timer]
+Unit=update-system.service
+OnCalendar=Fri, 17:00
+
+[Install]
+WantedBy=timers.target
