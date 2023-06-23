@@ -21,6 +21,9 @@ sdns()
 	echo  "CNAME: "
 	host -t CNAME $1
 	echo "---------------------"
+	echo "Ping: "
+	ping_result=$(ping -c 1 $1 | grep -i from)
+	echo $ping_result
 }
 
 # Verifica se o endereço é valido

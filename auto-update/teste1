@@ -1,0 +1,10 @@
+#!/bin/bash
+# Script : teste1
+# Date : Fri Jun 23 14:34:02 -03 2023
+# Author :
+# Version: 0.1
+# License: GNU/GLP
+
+date=$(date '+%Y-%m-%d %H:%M:%S')
+
+echo $date
