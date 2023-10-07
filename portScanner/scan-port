@@ -1,0 +1,67 @@
+#!/bin/bash
+
+scan-simples() {
+	read -p "Por favor insira o [IP] ou [Dominio] que deseja realizar o scan: " VALOR
+	[[ -z $VALOR ]] && echo "O valor inserido nao e valido" && exit 1
+	echo 'Realizando o scan de portas...'
+	nmap $VALOR 
+}
+
+scan-porta() {
+	read -p "Porta de Scanner ou Range de porta 1-1000: " PORTA
+	read -p "Por favor insira o [IP] ou [Dominio] que deseja realizar o scan: " VALOR
+	[[ -z $VALOR || -z $PORTA ]] && echo "O valor inserido nao e valido" && exit 1	
+	echo 'Realizando o scan da portas: ' $PORTA
+	nmap -p $PORTA $VALOR
+}
+
+scan-porta-tcp(){
+	read -p "Por favor insira o [IP] ou [Dominio] que deseja realizar o scan: " VALOR
+	[[ -z $VALOR ]] && echo "O valor inserido nao e valido" && exit 1
+	echo 'Realizando o scan de portas TCP'
+	nmap -sT $VALOR
+}
+
+scan-porta-udp(){
+	[[ $EUID -ne 0 ]] && echo "Por favor execute como root" && exit 1
+	read -p "Por favor insira o [IP] ou [Dominio] que deseja realizar o scan: " VALOR
+	[[ -z $VALOR ]] && echo "O valor inserido nao e valido" && exit 1
+	echo 'Realizando o scan de portas UDP'
+	nmap -sT $VALOR
+}
+
+scan-portas-abertas(){
+	read -p "Por favor insira o [IP] ou [Dominio] que deseja realizar o scan: " VALOR
+	[[ -z $VALOR ]] && echo "O valor inserido nao e valido" && exit 1
+	echo 'Realizando o scan de portas'
+	nmap --open $VALOR
+}
+
+montar-menu(){
+	PS3='Por favor selecione um tipo de scanner: '
+	select opt in "Scanner de portas simples" "Scanner de portas especificas" "Listar portas TCP" "[Executar como sudo] Listar portas UDP" "Scanner apenas portas abertas" "Sair"
+	do
+	    case $opt in
+	        "Scanner de portas simples")
+	            scan-simples
+				break;;
+	        "Scanner de portas especificas")
+				scan-porta
+	            break;;
+	        "Listar portas TCP")
+	            scan-porta-tcp
+				break;;
+	        "[Executar como sudo] Listar portas UDP")
+	            scan-porta-udp
+				break;;
+			"Scanner apenas portas abertas")
+				scan-portas-abertas
+				break;;
+	        "Sair")
+	            break;;
+	        *) echo "Opcao invalida $REPLY";;
+	    esac
+	done	
+}
+
+montar-menu
